@@ -242,3 +242,34 @@ main .panel:first-of-type { margin-top: 0; }
   .presentation-ready .artwork { grid-area: 1 / 1; }
   .presentation-ready .artwork.is-preview-before, .presentation-ready .artwork.is-preview-after { visibility: hidden; opacity: 0; width: auto; margin: 0; }
 }
+
+/* Warm, dark content backdrop and lighter navigation treatment. */
+main { background: radial-gradient(ellipse at 0% 70%, #f28b39aa, transparent 48%), radial-gradient(ellipse at 95% 8%, #b75a3688, transparent 35%), radial-gradient(ellipse at 100% 100%, #84322299, transparent 45%), #140f13; background-attachment: local; }
+main > .navigation { position: relative; background: transparent; border: 0; justify-content: flex-end; }
+main > .navigation .nav-links { justify-content: flex-end; }
+main > .navigation .nav-links a { background: #211c18; color: var(--cream); }
+main > .navigation .nav-links a:hover { background: var(--cream); color: var(--ink); }
+.profile-sidebar h1, .profile-sidebar .pixel-name { font-family: var(--serif); font-weight: 700; }
+.profile-sidebar .pixel-name { font-size: .85em; letter-spacing: -.04em; line-height: 1.2; text-transform: none; }
+.profile-sidebar .portrait { width: 245px; max-width: 95%; }
+.profile-sidebar .hero-layout { padding-top: .5rem; }
+.school-note { background: #292719e8; }
+/* A compact fan of artwork; the center image stays complete and readable. */
+.presentation-ready .artwork-list { grid-template-columns: minmax(0,1fr); max-width: 720px; padding: 1.5rem .75rem; perspective: 1100px; }
+.presentation-ready .artwork { grid-area: 1 / 1; width: 48%; justify-self: center; margin: 0; }
+.presentation-ready .artwork.is-active { z-index: 5; transform: none; }
+.presentation-ready .artwork.is-preview-before, .presentation-ready .artwork.is-preview-after,
+.presentation-ready .artwork.is-far-before, .presentation-ready .artwork.is-far-after { grid-area: 1 / 1; width: 48%; margin: 0; justify-self: center; visibility: visible; opacity: .9; pointer-events: none; z-index: 3; }
+.presentation-ready .artwork.is-preview-before { transform: translateX(-42%) scale(.86) rotateY(-18deg) rotate(-5deg); }
+.presentation-ready .artwork.is-preview-after { transform: translateX(42%) scale(.86) rotateY(18deg) rotate(5deg); }
+.presentation-ready .artwork.is-far-before { transform: translateX(-73%) scale(.73) rotateY(-25deg) rotate(-8deg); z-index: 2; opacity: .7; }
+.presentation-ready .artwork.is-far-after { transform: translateX(73%) scale(.73) rotateY(25deg) rotate(8deg); z-index: 2; opacity: .7; }
+.presentation-ready .is-far-before figcaption, .presentation-ready .is-far-after figcaption { visibility: hidden; }
+.presentation-ready .artwork-link { border-radius: 12px; }
+.presentation-ready .artwork-link img { border-radius: 8px; }
+@media (min-width: 1000px) { main { scroll-padding-top: 3rem; } }
+@media (max-width: 600px) {
+  .presentation-ready .artwork { width: 100%; }
+  .presentation-ready .artwork.is-preview-before, .presentation-ready .artwork.is-preview-after,
+  .presentation-ready .artwork.is-far-before, .presentation-ready .artwork.is-far-after { display: none; }
+}

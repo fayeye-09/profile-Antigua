@@ -2,15 +2,13 @@
 const portfolio = document.querySelector('#portfolio');
 const list = portfolio.querySelector('.artwork-list');
 const slides = [...list.querySelectorAll('.artwork')];
-const status = document.querySelector('#slide-status');
-const toggle = document.querySelector('#toggle-presentation');
 const viewer = document.querySelector('#artwork-viewer');
 const viewerImage = document.querySelector('#viewer-image');
 const closeViewer = document.querySelector('#close-viewer');
 const intervalMs = 3000;
 let current = 0;
 let timer = null;
-let paused = false;
+let hovered = false;
 let returnFocus = null;
 
 function showSlide(index) {
@@ -20,27 +18,25 @@ function showSlide(index) {
     slide.classList.toggle('is-active', active);
     slide.classList.toggle('is-preview-before', i === (current - 1 + slides.length) % slides.length);
     slide.classList.toggle('is-preview-after', i === (current + 1) % slides.length);
+    slide.classList.toggle('is-far-before', i === (current - 2 + slides.length) % slides.length);
+    slide.classList.toggle('is-far-after', i === (current + 2) % slides.length);
     slide.inert = !active;
     slide.setAttribute('aria-hidden', String(!active));
     slide.querySelector('a').tabIndex = active ? 0 : -1;
   });
   // Load the next artwork ahead of its scheduled appearance.
   slides[(current + 1) % slides.length].querySelector('img').loading = 'eager';
-  status.textContent = `${current + 1} / ${slides.length}`;
 }
 function updateTimer() {
   clearInterval(timer);
   timer = null;
   // Don't change an artwork while someone is inspecting it or keyboard-focusing it.
-  if (!paused && !viewer.open && !document.hidden && !list.contains(document.activeElement)) {
+  if (!hovered && !viewer.open && !document.hidden && !list.contains(document.activeElement)) {
     timer = setInterval(() => showSlide(current + 1), intervalMs);
   }
 }
-toggle.addEventListener('click', () => {
-  paused = !paused;
-  toggle.textContent = paused ? 'Resume presentation' : 'Pause presentation';
-  updateTimer();
-});
+list.addEventListener('mouseenter', () => { hovered = true; updateTimer(); });
+list.addEventListener('mouseleave', () => { hovered = false; updateTimer(); });
 document.addEventListener('visibilitychange', updateTimer);
 list.addEventListener('focusin', updateTimer);
 list.addEventListener('focusout', () => setTimeout(updateTimer, 0));
@@ -72,7 +68,6 @@ viewer.addEventListener('close', () => {
   updateTimer();
 });
 portfolio.classList.add('presentation-ready');
-portfolio.querySelector('.presentation-controls').hidden = false;
 slides[0].querySelector('img').loading = 'eager';
 showSlide(0);
 updateTimer();
