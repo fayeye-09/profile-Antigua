@@ -298,3 +298,18 @@ body { background: radial-gradient(ellipse at 0% 70%, #f28b39aa, transparent 48%
 .profile-sidebar .contact-links img { width: 52px; height: 52px; object-fit: contain; }
 .artwork figcaption { text-align: center; }
 .portfolio-intro { margin-bottom: .7rem; }
+
+/* Comfortable profile rhythm and compact contact buttons. */
+.profile-sidebar h1 { margin: 1rem 0 1.35rem; line-height: 1.12; }
+.profile-sidebar .profession { line-height: 1.8; }
+.profile-sidebar .location { margin-top: 1rem; }
+.profile-sidebar .tagline { margin-top: 1.4rem; line-height: 1.65; }
+.profile-sidebar .hero-bottom { margin-top: 1.5rem; padding-top: 1rem; }
+.profile-sidebar .contact-links { gap: .65rem; }
+.profile-sidebar .contact-links a { width: auto; height: auto; min-height: 40px; padding: .5rem 1rem; gap: .6rem; border-radius: 999px; background: var(--ink); color: var(--cream); font-size: .875rem; }
+.profile-sidebar .contact-links a:hover { background: var(--olive); opacity: 1; }
+.school-note > div { flex: 1; min-width: 0; }
+.project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+.project-grid .project-card { margin-top: 0; display: flex; flex-direction: column; min-width: 0; }
+.project-grid .project-card a { margin-top: auto; align-self: flex-start; }
+@media (max-width: 700px) { .project-grid { grid-template-columns: 1fr; } }
