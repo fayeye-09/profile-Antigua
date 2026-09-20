@@ -18,6 +18,8 @@ function showSlide(index) {
   slides.forEach((slide, i) => {
     const active = i === current;
     slide.classList.toggle('is-active', active);
+    slide.classList.toggle('is-preview-before', i === (current - 1 + slides.length) % slides.length);
+    slide.classList.toggle('is-preview-after', i === (current + 1) % slides.length);
     slide.inert = !active;
     slide.setAttribute('aria-hidden', String(!active));
     slide.querySelector('a').tabIndex = active ? 0 : -1;

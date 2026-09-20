@@ -56,3 +56,5 @@ The original commit `08fcdcd` was already published and has been preserved. The 
 ## Full-window layout
 
 Desktop windows (1000px and wider) use a stationary profile/contact sidebar and a separately scrolling main column. CSS Grid fills the viewport with no outer side margins. The sidebar can scroll independently on short windows so no contact information is cut off. Below 1000px, the page returns to normal document scrolling, with profile and contacts above the content. The skip link focuses the keyboard-scrollable main region.
+
+The sidebar now has a small outer inset and a subtle shadow. Navigation sits at the top of the right content column. Contact links use dark pill buttons. The compact timed presentation includes decorative neighboring previews on larger screens, with a single image on mobile.

@@ -204,3 +204,41 @@ main .panel:first-child { margin-top: 0; }
   .about-layout, .interests-layout { grid-template-columns: minmax(0,1fr); }
 }
 @media (prefers-reduced-motion: reduce) { main { scroll-behavior: auto; } }
+
+/* Floating profile and navigation on the content side. */
+.profile-sidebar { margin: 16px; border: 1px solid #e8d9b566; box-shadow: 0 8px 18px #171b1340; }
+.profile-sidebar .contact-links a { border-radius: 999px; background: var(--ink); color: var(--cream); padding: .7rem 1.1rem; border-color: var(--ink); }
+.profile-sidebar .contact-links a:hover { background: var(--olive); }
+main > .navigation { position: sticky; top: 0; z-index: 5; background: var(--olive); color: var(--cream); padding: .8rem 0 1rem; margin: -1.2rem 0 2.5rem; border-bottom: 1px solid #e8d9b555; }
+main > .navigation .monogram { display: none; }
+main > .navigation .nav-links { justify-content: flex-start; max-width: none; }
+main > .navigation .nav-links a { border-color: #e8d9b588; }
+main > .navigation .nav-links a:hover { color: var(--ink); }
+main .panel:first-of-type { margin-top: 0; }
+.portfolio-intro .serif-note { font-size: clamp(1.8rem, 3vw, 2.6rem); }
+.presentation-ready .artwork-list { max-width: 640px; grid-template-columns: minmax(0,1fr) minmax(0,3fr) minmax(0,1fr); column-gap: .75rem; overflow: hidden; padding: .7rem; }
+.presentation-ready .artwork { grid-area: 1 / 2; }
+.presentation-ready .artwork.is-active { z-index: 2; }
+.presentation-ready .artwork.is-preview-before, .presentation-ready .artwork.is-preview-after { visibility: visible; opacity: .45; pointer-events: none; align-self: start; width: 240%; margin-top: 2rem; }
+.presentation-ready .artwork.is-preview-before { grid-area: 1 / 1; justify-self: end; }
+.presentation-ready .artwork.is-preview-after { grid-area: 1 / 3; }
+.presentation-ready .is-preview-before figcaption, .presentation-ready .is-preview-after figcaption { visibility: hidden; }
+.presentation-ready .artwork-link { padding: .3rem; box-shadow: 0 4px 8px #29271930; }
+.presentation-ready .artwork h3 { font-size: 1.35rem; }
+.presentation-ready .artwork figcaption { padding-top: .85rem; }
+@media (min-width: 1000px) {
+  .profile-sidebar { border-right: 1px solid #e8d9b566; margin-right: 0; }
+  main { padding-top: 1.2rem; scroll-padding-top: 7rem; }
+  main > .navigation { margin-top: 0; }
+}
+@media (max-width: 999px) {
+  main > .navigation { top: 0; margin-top: -2rem; }
+  main { scroll-margin-top: 1rem; }
+  section { scroll-margin-top: 7rem; }
+}
+@media (max-width: 600px) {
+  .profile-sidebar { margin: 12px; }
+  .presentation-ready .artwork-list { grid-template-columns: minmax(0,1fr); max-width: 360px; }
+  .presentation-ready .artwork { grid-area: 1 / 1; }
+  .presentation-ready .artwork.is-preview-before, .presentation-ready .artwork.is-preview-after { visibility: hidden; opacity: 0; width: auto; margin: 0; }
+}
