@@ -50,7 +50,7 @@
       <section id="portfolio" class="portfolio panel" aria-labelledby="portfolio-heading">
         <div class="title-tab"><span class="section-number">03</span><h2 id="portfolio-heading">Portfolio</h2><span aria-hidden="true">↗</span></div>
         <div class="portfolio-intro"><p class="serif-note">A selection of<br><i>my design work.</i></p><p>Promotional graphics, price-list layouts, and customer thank-you designs from my exported Canva collection.</p></div>
-        <p class="gallery-help">Select an artwork to see it larger. Descriptive labels identify the supplied exports.</p>
+        <p class="gallery-help">Artworks change every 3 seconds. Pause to take your time, or select an artwork to see it larger.</p>
         <!-- EDIT SLIDES HERE: each list item supplies its image path, title, and description. -->
         <ul class="artwork-list" aria-label="Graphic design artwork">
           <li class="artwork">
@@ -240,15 +240,17 @@
             </figure>
           </li>
         </ul>
-        <div class="carousel-controls" hidden>
-          <button type="button" id="previous-slide" aria-label="Previous artwork">← <span>Previous</span></button>
-          <p id="slide-status" role="status" aria-live="polite" aria-atomic="true"></p>
-          <button type="button" id="next-slide" aria-label="Next artwork"><span>Next</span> →</button>
+        <div class="presentation-controls" hidden>
+          <button type="button" id="toggle-presentation">Pause presentation</button>
+          <p id="slide-status" aria-live="off"></p>
         </div>
-        <div class="thumbnail-list" aria-label="Choose artwork" hidden></div>
       </section>
-      <!-- These school-project details are separate from the graphic design collection. -->
-      <section id="projects" class="school-note" aria-labelledby="projects-heading"><span class="section-number">04</span><div><h2 id="projects-heading">School projects</h2><p>A space for school projects related to my BS Computer Engineering program.</p><p class="placeholder-note">To add: project titles, descriptions, pictures, and links.</p></div><span class="soon-label">Coming soon</span></section>
+      <section id="projects" class="school-note" aria-labelledby="projects-heading">
+        <span class="section-number">04</span>
+        <div><h2 id="projects-heading">Featured School Projects</h2><p>School projects related to my BS Computer Engineering program.</p>
+          <article class="project-card"><h3>Intern Connect</h3><p>Description and my role: details to be added.</p><a href="https://intern-connect-pi.vercel.app/">Visit Intern Connect ↗</a></article>
+        </div>
+      </section>
     </main>
     <footer id="contact">
       <div class="contact-heading"><p class="eyebrow">The conversation continues</p><h2>Let’s say <i>hello.</i><span aria-hidden="true">✳</span></h2></div>

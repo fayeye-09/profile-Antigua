@@ -9,16 +9,16 @@ Plain HTML, CSS, and vanilla JavaScript. Open `index.html` in a browser; no inst
 - `assets/portfolio/1.png` through `31.png` are exact copies of the supplied exports. Their source files are unchanged. Similar exports are intentionally retained.
 - Find `EDIT SLIDES HERE` in `index.html`. Each `<li class="artwork">` is one slide. This readable HTML list is the single source of paths, titles, descriptions, and alt text.
 - To replace an artwork, copy the new file into `assets/portfolio/`, update both the link's `href` and image's `src`, provide its actual width/height and descriptive alt text, then update `h3`, the caption paragraph, and the link's accessible label.
-- Duplicate a complete artwork list item to add a slide, or remove one to remove a slide. Keep at least three artworks for neighboring previews. JavaScript automatically updates thumbnails and the counter.
+- Duplicate a complete artwork list item to add a slide, or remove one to remove a slide. Keep at least one artwork. JavaScript automatically updates the counter and loops through the list.
 - The supplied exports did not include project briefs. Captions describe visible designs; they do not claim results, clients, or individual contributions. School project materials remain a separate, clearly marked placeholder.
 
-## How the slideshow works
+## How the timed presentation works
 
-`script.js` loads with `defer` and reads the HTML list. It adds classes for the current and neighboring slides and creates thumbnail buttons. Previous/Next, Left/Right arrows, Home/End, thumbnails, and horizontal touch swipes change the active artwork. It never autoplays. Vertical scrolling remains available.
+`script.js` reads the artwork list in `index.html`, shows one artwork, and advances every 3000 milliseconds, looping after image 31. CSS crossfades the overlapping grid items over 450 milliseconds with no horizontal movement. Reduced-motion preferences disable the fade. The Pause/Resume button allows visitors to read at their own pace. Playback also pauses while the page is hidden, the viewer is open, or an artwork link has keyboard focus.
 
-Select the active artwork to open a native `dialog`. It contains a labeled close button, supports Escape, keeps focus inside while open, and restores focus to the opening link when closed. Older browsers without dialog support can still follow the original image link. Without JavaScript, all 31 artworks remain visible in a gallery. No essential content depends on JavaScript.
+Select an artwork to open the native enlarged dialog. Close or Escape dismisses it, Tab stays inside, and focus returns to the original link. Without JavaScript all images remain accessible as a gallery. `object-fit: contain` preserves complete artwork and its proportions.
 
-CSS `object-fit: contain` displays the whole artwork, including mixed image sizes. Desktop has subtle neighboring previews; mobile hides them. The brief fade is disabled for reduced-motion preferences. The small hero loading motif is static and decorative.
+The content panels and portfolio frames have square corners. The portrait backdrop remains circular. Featured School Projects now includes Intern Connect at https://intern-connect-pi.vercel.app/; replace the clearly marked description/role placeholders when accurate details are supplied.
 
 ## HTML and the CSS box model
 
@@ -50,3 +50,5 @@ gh repo create fayeye-09/profile-Antigua --public --source=. --remote=origin --p
 ```
 
 Run that only if the remote repository does not already exist. Do not reset existing history or force-push. Official publishing instructions: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+
+The original commit `08fcdcd` was already published and has been preserved. The update uses the exact commit message `profile-Antigua`; no published history is rewritten.

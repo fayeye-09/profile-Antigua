@@ -110,7 +110,7 @@ footer { padding: 3.5rem 2.5rem 1rem; color: var(--cream); }
   .email-address { width: 100%; order: 2; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-/* Portfolio: a normal gallery first, progressively enhanced into a carousel. */
+/* Portfolio: a normal gallery first, progressively enhanced into a timed presentation. */
 [hidden] { display: none !important; }
 button { font: inherit; cursor: pointer; }
 .portfolio { background: linear-gradient(125deg, var(--amber), var(--gold)); }
@@ -124,20 +124,7 @@ button { font: inherit; cursor: pointer; }
 .artwork figcaption { padding: 1.2rem .25rem; }
 .artwork h3 { margin: 0 0 .4rem; font: normal 1.65rem/1.2 var(--serif); }
 .artwork figcaption p { font-size: .875rem; }
-.carousel-ready .artwork-list { grid-template-columns: minmax(0,1fr) minmax(0,4fr) minmax(0,1fr); gap: 1rem; align-items: start; overflow: hidden; padding: 1rem .5rem .25rem; touch-action: pan-y; }
-.carousel-ready .artwork { grid-row: 1; }
-.carousel-ready .is-active { grid-column: 2; z-index: 1; animation: reveal-artwork .2s ease-out; }
-.carousel-ready .is-previous { grid-column: 1; width: 290%; justify-self: end; transform: translateY(3.5rem) rotate(-5deg) scale(.88); opacity: .65; }
-.carousel-ready .is-next { grid-column: 3; width: 290%; transform: translateY(3.5rem) rotate(5deg) scale(.88); opacity: .65; }
-.carousel-ready .is-previous figcaption, .carousel-ready .is-next figcaption { display: none; }
-.carousel-controls { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin: .5rem 0 1.5rem; }
-.carousel-controls button, #close-viewer { min-height: 44px; padding: .6rem 1rem; border: 1px solid var(--ink); border-radius: 2rem; background: var(--cream); color: var(--ink); }
-.carousel-controls button:hover, #close-viewer:hover { background: var(--amber); }
 #slide-status { min-width: 5rem; text-align: center; font: .875rem var(--pixel); }
-.thumbnail-list { display: flex; gap: .6rem; overflow-x: auto; padding: .7rem; border-top: 1px solid #29271955; scrollbar-color: var(--olive) var(--cream); }
-.thumbnail-list button { flex: 0 0 64px; min-height: 64px; padding: 3px; border: 2px solid transparent; border-radius: .4rem; background: var(--cream); }
-.thumbnail-list img { width: 100%; aspect-ratio: 1; object-fit: contain; }
-.thumbnail-list button[aria-current="true"] { border-color: var(--ink); box-shadow: 0 0 0 2px var(--cream); }
 #artwork-viewer { width: min(96vw, 1120px); max-height: 94dvh; padding: 1.2rem; color: var(--ink); background: var(--cream); border: 1px solid var(--ink); border-radius: 1rem; }
 #artwork-viewer::backdrop { background: #171b13e8; }
 .viewer-toolbar { display: flex; gap: 1rem; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
@@ -146,18 +133,24 @@ button { font: inherit; cursor: pointer; }
 #viewer-image { width: 100%; height: min(72dvh,1080px); object-fit: contain; background: var(--ink); }
 #viewer-caption { margin-top: .8rem; font-size: .875rem; }
 .viewer-open { overflow: hidden; }
-@keyframes reveal-artwork { from { opacity: .7; } to { opacity: 1; } }
 @media (max-width: 760px) {
   .portfolio-intro { flex-direction: column; align-items: start; gap: 1rem; }
-  .artwork-list, .carousel-ready .artwork-list { grid-template-columns: minmax(0,1fr); gap: 1rem; }
-  .carousel-ready .is-active { grid-column: 1; }
-  .carousel-ready .is-previous, .carousel-ready .is-next { display: none; }
-  .carousel-controls { gap: .5rem; }
-  .carousel-controls button { padding: .6rem .75rem; font-size: .875rem; }
-  .carousel-controls button span { display: none; }
-  .thumbnail-list button { flex-basis: 54px; min-height: 54px; }
   .viewer-toolbar { flex-wrap: wrap; }
   .hero-layout { padding-top: 2rem; }
   .about-intro { padding-right: 0; }
 }
-@media (prefers-reduced-motion: reduce) { .carousel-ready .is-active { animation: none; } }
+/* Sharp panels, while retaining the circular portrait backdrop and pill navigation. */
+.poster, .hero, .panel, .school-note, .title-tab, .artwork-link,
+.artwork-link img, .project-card, #artwork-viewer { border-radius: 0; }
+.title-tab { transform: none; }
+.project-card { margin-top: 1.5rem; padding: 1.5rem; border: 1px solid var(--cream); }
+.project-card h3 { margin: 0 0 .6rem; font: 1.8rem var(--serif); }
+.project-card p { margin-bottom: 1rem; }
+.project-card a { display: inline-block; background: var(--gold); color: var(--ink); padding: .7rem 1rem; font-weight: bold; }
+.presentation-ready .artwork-list { display: grid; grid-template-columns: minmax(0,1fr); max-width: 680px; margin: auto; gap: 0; }
+.presentation-ready .artwork { grid-area: 1 / 1; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .45s ease, visibility 0s .45s; }
+.presentation-ready .artwork.is-active { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; z-index: 1; }
+.presentation-controls { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 1rem; }
+#toggle-presentation, #close-viewer { min-height: 44px; padding: .65rem 1rem; border: 1px solid var(--ink); color: var(--ink); background: var(--cream); }
+#toggle-presentation:hover, #close-viewer:hover { background: var(--amber); }
+@media (prefers-reduced-motion: reduce) { .presentation-ready .artwork { transition: none; } }
