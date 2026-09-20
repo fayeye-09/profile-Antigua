@@ -52,3 +52,7 @@ gh repo create fayeye-09/profile-Antigua --public --source=. --remote=origin --p
 Run that only if the remote repository does not already exist. Do not reset existing history or force-push. Official publishing instructions: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
 The original commit `08fcdcd` was already published and has been preserved. The update uses the exact commit message `profile-Antigua`; no published history is rewritten.
+
+## Full-window layout
+
+Desktop windows (1000px and wider) use a stationary profile/contact sidebar and a separately scrolling main column. CSS Grid fills the viewport with no outer side margins. The sidebar can scroll independently on short windows so no contact information is cut off. Below 1000px, the page returns to normal document scrolling, with profile and contacts above the content. The skip link focuses the keyboard-scrollable main region.
